@@ -3,6 +3,7 @@
 import 'package:alert_us/Notifications/notifications.dart';
 import 'package:alert_us/screens/All_options.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -203,22 +204,24 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ElevatedButton.icon(
-                      onPressed: () {
-                        showOptions();
-                      },
-                      style: const ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(Colors.red),
-                      ),
-                      icon: Icon(Icons.warning_amber_outlined),
-                      label: Text(
-                        'ALERT',
-                        style: TextStyle(fontSize: 20),
-                      )),
-                ]),
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(
+                  onPressed: () {
+                    showOptions();
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(Colors.red),
+                  ),
+                  icon: Icon(Icons.warning_amber_outlined),
+                  label: Text(
+                    'ALERT',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
             SizedBox(
               height: 60,
             ),

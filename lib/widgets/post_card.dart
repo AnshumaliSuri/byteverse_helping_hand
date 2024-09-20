@@ -1,15 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:alert_us/provider/user_provider.dart';
 import 'package:alert_us/resources/firestore_methods.dart';
 import 'package:alert_us/screens/comment_screen.dart';
 import 'package:alert_us/utils/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
-import '../models/user.dart';
 
 class PostCard extends StatefulWidget {
   final snap;
@@ -167,7 +164,7 @@ class _PostCardState extends State<PostCard> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 4),
                       child: Text(
-                        'View all ${commentLen} comments',
+                        'View all $commentLen omments',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,

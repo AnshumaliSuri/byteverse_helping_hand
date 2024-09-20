@@ -1,13 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class Post {
-  final String description;
   final String uid;
   final String postId;
   final String username;
   final datePublished;
   final String postUrl;
+  final String description;
 
   const Post({
     required this.description,
@@ -40,3 +39,4 @@ class Post {
     );
   }
 }
+

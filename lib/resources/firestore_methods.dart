@@ -2,11 +2,11 @@ import 'package:alert_us/models/post.dart';
 import 'package:alert_us/resources/storage_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
-
 class FirestoreMethods {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  FirestoreMethods();
 
   Future<String> uploadPost(
       String description, Uint8List file, String uid, String username) async {
@@ -23,7 +23,7 @@ class FirestoreMethods {
         datePublished: DateTime.now(),
         postUrl: photoUrl,
       );
-      _firestore.collection('posts').doc(postId).set(post.toJson());
+      await firestore.collection('posts').doc(postId).set(post.toJson());
       res = "success";
     } catch (err) {
       res = err.toString();
@@ -38,7 +38,7 @@ class FirestoreMethods {
     try {
       if (text.isNotEmpty) {
         String commentId = const Uuid().v1();
-        _firestore
+        firestore
             .collection('posts')
             .doc(postId)
             .collection('comments')
@@ -64,7 +64,7 @@ class FirestoreMethods {
   Future<String> deletePost(String postId) async {
     String res = "Some error occurred";
     try {
-      await _firestore.collection('posts').doc(postId).delete();
+      await firestore.collection('posts').doc(postId).delete();
       res = 'success';
     } catch (err) {
       res = err.toString();

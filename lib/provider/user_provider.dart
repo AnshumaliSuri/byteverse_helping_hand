@@ -1,6 +1,6 @@
 import 'package:alert_us/models/user.dart';
-import 'package:alert_us/resources/auth_methods.dart';
 import 'package:flutter/material.dart';
+import 'package:alert_us/resources/auth_methods.dart';
 
 class UserProvider with ChangeNotifier {
   User? _user;
@@ -8,7 +8,7 @@ class UserProvider with ChangeNotifier {
   User get getUser => _user!;
 
   Future<void> refreshUser() async {
-    User user = await _authMethods.getUserDetails();
+    User user = await _authMethods.getUserDetails() as User;
     _user = user;
     notifyListeners();
   }

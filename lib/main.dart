@@ -1,43 +1,24 @@
 import 'package:alert_us/provider/user_provider.dart';
 import 'package:alert_us/responsive/mobile_screen_layout.dart';
 
-import 'dart:async';
-import 'dart:developer';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'Authentication/Auth/NewHome.dart';
 import 'Authentication/Auth/login.dart';
-import 'Notifications/notifications.dart';
 import 'firebase_options.dart';
 String deviceToken="token";
 bool result=false;
 
 void main() async {
-  // getToken();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
 
   runApp(const MyApp());
 }
-
-
-// void getToken() async{
-//   final FirebaseMessaging _fcm=FirebaseMessaging.instance;
-//   final token=await _fcm.getToken();
-//   deviceToken=token.toString();
-//   print("token=$token");
-// }
-
-
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -61,7 +42,7 @@ class _MyAppState extends State<MyApp> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
               if (snapshot.hasData) {
-                return MobileScreenLayout();
+                return const  MobileScreenLayout();
               } else if (snapshot.hasError) {
                 return Center(
                   child: Text('${snapshot.error}'),

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 import 'package:alert_us/Authentication/Auth/signUp.dart';
 import 'package:alert_us/main.dart';
@@ -6,7 +8,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'NewHome.dart';
 import 'forget_password.dart';
 
 class LoginPage extends StatefulWidget {
@@ -52,8 +53,8 @@ class LoginPageState extends State<LoginPage> {
   }
 
   Future<void> getDeviceTokenToSendNotification()async{
-    final FirebaseMessaging _fcm=FirebaseMessaging.instance;
-    final token=await _fcm.getToken();
+    final firebaseMessaging  = FirebaseMessaging.instance;
+    final token = await firebaseMessaging.getToken();
     deviceToken=token.toString();
   }
 
@@ -133,7 +134,7 @@ class LoginPageState extends State<LoginPage> {
                 ),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
+                      backgroundColor: Colors.black,
                       minimumSize: const Size.fromHeight(50), // NEW
                     ),
                     onPressed: () {
@@ -168,9 +169,9 @@ class LoginPageState extends State<LoginPage> {
           ),
         )),
       ),
-      bottomNavigationBar: Row(
+      bottomNavigationBar: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           Text(
             "©2022 - 2023 All Rights Reserved",
             style: TextStyle(fontSize: 16),

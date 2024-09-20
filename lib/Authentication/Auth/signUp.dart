@@ -1,33 +1,20 @@
-// import 'package:chat_app/Models/UserModel.dart';
-// import 'package:chat_app/pages/CompleteProfile.dart';
-// import 'package:chhttps://github.com/AnshumaliSuri/byteverse_helping_hand/pull/10/conflict?name=lib%252FAuthentication%252FAuth%252FsignUp.dart&ancestor_oid=49db26c6c8b265c49bb181b0ffaff3d3ccae0fe4&base_oid=a6fa4fb0b80644c51dd037c3ebcb0639c4664594&head_oid=1079da4addf439fb8fd1b5869533d68c017cd9a1at_app/pages/LoginPage.dart';
-// import 'package:chat_app/pages/UploadImmage.dart';
-// ignore_for_file: prefer_final_fields
+// ignore_for_file: prefer_final_fields, use_build_context_synchronously
 
-import 'dart:developer';
-import 'package:alert_us/models/user.dart' as model;
-import 'package:alert_us/resources/auth_methods.dart';
 import 'package:alert_us/responsive/mobile_screen_layout.dart';
-
-import 'package:alert_us/screens/home_screen.dart';
-import 'package:alert_us/utils/global_variable.dart';
-
 import 'package:alert_us/utils/location.dart';
 import 'package:alert_us/utils/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 import '../../main.dart';
 import 'login.dart';
+import 'package:alert_us/resources/auth_methods.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SignUpState createState() => _SignUpState();
 }
 
@@ -38,66 +25,10 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _username = TextEditingController();
   TextEditingController _locationNickname = TextEditingController();
 
+  // ignore: unused_field
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // void checkValues() {
-  //   String email = emailController.text.trim();
-  //   String password = passwordController.text.trim();
-  //   String cPassword = cPasswordController.text.trim();
-  //   String username = _username.text.trim();
-  //   String locationNickname = _locationNickname.text.trim();
-  //   if (email == "" ||
-  //       password == "" ||
-  //       cPassword == "" ||
-  //       username == "" ||
-  //       locationNickname == "") {
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //         content: Text(
-  //       "Please fill all the field",
-  //       style: TextStyle(backgroundColor: Colors.red),
-  //     )));
-  //     log("Please fill all the field");
-  //   } else if (password != cPassword) {
-  //     log("Password do not match");
-  //     ScaffoldMessenger.of(context)
-  //         .showSnackBar(const SnackBar(content: Text("Password do not match")));
-  //     //
-  //   } else {
-  //     signUp(email, password);
-  //   }
-  // }
-
-  // void signUp(String email, String password) async {
-  //   try {
-  //     UserCredential userCredential = await FirebaseAuth.instance
-  //         .createUserWithEmailAndPassword(email: email, password: password);
-
-  //     String res = "Some error occured";
-  //     model.User user = model.User(
-  //       locationNickname: _locationNickname.text,
-  //       address: address,
-  //       username: _username.text,
-  //       uid: userCredential.user!.uid,
-  //     );
-
-  //     await _firestore
-  //         .collection('users')
-  //         .doc(userCredential.user!.uid)
-  //         .set(user.toJson());
-  //     res = "success";
-  //     if (userCredential.user != null) {
-  //       Navigator.pop(context);
-  //     }
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //         const SnackBar(content: Text("User Created you can login ")));
-  //     // log("User Created");
-  //   } on FirebaseAuthException catch (ex) {
-  //     ScaffoldMessenger.of(context)
-  //         .showSnackBar(SnackBar(content: Text(ex.code.toString())));
-  //     log(ex.code.toString());
-  //   }
-  // }
-
+  // ignore: unused_field
   bool _isLoading = false;
   void signUpUser() async {
     setState(() {
@@ -118,7 +49,7 @@ class _SignUpState extends State<SignUp> {
       showSnackBar(res, context);
     } else {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => MobileScreenLayout()),
+        MaterialPageRoute(builder: (context) => const MobileScreenLayout()),
       );
     }
   }
@@ -135,7 +66,7 @@ class _SignUpState extends State<SignUp> {
           stops: const [0.0, 1.0],
           tileMode: TileMode.clamp,
         )),
-        padding: EdgeInsets.symmetric(horizontal: 40),
+        padding: const EdgeInsets.symmetric(horizontal: 40),
         child: (Center(
           child: SingleChildScrollView(
             child: Column(
@@ -245,7 +176,7 @@ class _SignUpState extends State<SignUp> {
                     onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LocationPage()))
+                                builder: (context) => const LocationPage()))
                         .then((result) {}),
 
                     child: const Text('Set your location')),
@@ -254,7 +185,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.black,
+  backgroundColor: Colors.black,
                     minimumSize: const Size.fromHeight(50), // NEW
                   ),
                   onPressed: () {
@@ -275,27 +206,25 @@ class _SignUpState extends State<SignUp> {
           ),
         )),
       ),
-      bottomNavigationBar: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Already have an account?",
-              style: TextStyle(fontSize: 16),
-            ),
-            CupertinoButton(
-                child: const Text(
-                  "Login",
-                  style: TextStyle(fontSize: 16),
-                ),
-                onPressed: () {
-                  Navigator.push(context, // Current context
-                      MaterialPageRoute(builder: (context) {
-                    return const LoginPage();
-                  }));
-                }),
-          ],
-        ),
+      bottomNavigationBar: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Already have an account?",
+            style: TextStyle(fontSize: 16),
+          ),
+          CupertinoButton(
+              child: const Text(
+                "Login",
+                style: TextStyle(fontSize: 16),
+              ),
+              onPressed: () {
+                Navigator.push(context, // Current context
+                    MaterialPageRoute(builder: (context) {
+                  return const LoginPage();
+                }));
+              }),
+        ],
       ),
     );
   }

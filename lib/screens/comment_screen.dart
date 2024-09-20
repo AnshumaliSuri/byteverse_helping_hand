@@ -57,7 +57,7 @@ class _CommentScreenState extends State<CommentScreen> {
           height: kToolbarHeight,
           margin:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          padding: EdgeInsets.only(left: 16, right: 8),
+          padding: const EdgeInsets.only(left: 16, right: 8),
           child: Row(
             children: [
               Expanded(

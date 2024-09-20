@@ -1,4 +1,3 @@
-import 'package:alert_us/Authentication/Auth/signUp.dart';
 import 'package:alert_us/utils/global_variable.dart';
 import 'package:flutter/material.dart';
 import 'package:location_picker_flutter_map/location_picker_flutter_map.dart';
@@ -19,7 +18,7 @@ class _LocationPageState extends State<LocationPage> {
             'https://api.mapbox.com/styles/v1/anshumali-suri/clgae5bab005j01lacqdx1wq9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYW5zaHVtYWxpLXN1cmkiLCJhIjoiY2xnYWM0dGpjMWcycTNlcWwwbG9zcmFjaCJ9.yZq0CsGoVUVgRo2j2FMzPA',
         // initPosition: LatLong(23, 89),
         selectLocationButtonStyle: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.blue),
+          backgroundColor: WidgetStateProperty.all(Colors.blue),
         ),
         selectLocationButtonText: 'Set Current Location',
         initZoom: 11,

@@ -14,10 +14,11 @@ class MobileScreenLayout extends StatefulWidget {
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   addData() async {
-    UserProvider _userProvider = Provider.of(context, listen: false);
-    await _userProvider.refreshUser();
+    UserProvider userProvider = Provider.of(context, listen: false);
+    await userProvider.refreshUser();
   }
 
+  @override
   void initState() {
     addData();
     super.initState();
@@ -28,6 +29,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   int _page = 0;
   late PageController pageController;
 
+  @override
   void dispose() {
     super.dispose();
     pageController.dispose();
@@ -58,9 +60,8 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
       ),
       body: PageView(
         controller: pageController,
-        onPageChanged: onPageChanged,
+        physics: const NeverScrollableScrollPhysics(),
         children: homeScreenItems,
-        physics: NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: CupertinoTabBar(
         backgroundColor: Colors.black,

@@ -1,16 +1,16 @@
+import 'package:alert_us/utils/location.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../Authentication/Auth/forget_password.dart';
 import '../Authentication/Auth/login.dart';
-import '../utils/location.dart';
 
 class DashboardScreen extends StatefulWidget {
   final String uid;
 
   // const DashboardScreen({super.key, required this.uid});
 
-  const DashboardScreen({required this.uid});
+  const DashboardScreen({super.key, required this.uid});
 
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
@@ -37,7 +37,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+         title: const Text('Dashboard'),
         backgroundColor: Colors.black,
         shadowColor: Colors.cyan,
       ),
@@ -54,7 +54,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     : null,
                 radius: 60,
                 child: _profileImageUrl == null
-                    ? Icon(Icons.add_a_photo)
+                    ? const Icon(Icons.add_a_photo)
                     : null,
               ),
             ),
@@ -71,7 +71,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => LocationPage()))
+                        builder: (context) => const LocationPage()))
                     .then((result) {}),
                 // onPressed: () => Navigator.of(context).pushReplacement(
                 //         MaterialPageRoute(builder: (context) {

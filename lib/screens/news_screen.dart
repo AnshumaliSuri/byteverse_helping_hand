@@ -15,7 +15,6 @@ class NewsScreen extends StatefulWidget {
 class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -46,10 +45,8 @@ class _NewsScreenState extends State<NewsScreen> {
 
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
-              itemBuilder: (context, index) => Container(
-                child: PostCard(
-                  snap: snapshot.data!.docs[index].data(),
-                ),
+              itemBuilder: (context, index) => PostCard(
+                snap: snapshot.data!.docs[index].data(),
               ),
             );
           }),
